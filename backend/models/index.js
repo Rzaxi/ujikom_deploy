@@ -17,6 +17,10 @@ const sequelize = new Sequelize(
     port: process.env.DB_PORT || 3306,
     dialect: 'mysql',
     logging: false,
+    define: {
+      charset: 'utf8mb4',
+      collate: 'utf8mb4_general_ci'
+    }
   }
 );
 
@@ -43,5 +47,14 @@ Object.keys(db).forEach(modelName => {
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
+
+// Auto-sync database tables in production
+sequelize.sync({ force: false, alter: true })
+  .then(() => {
+    console.log('Database tables synced successfully!');
+  })
+  .catch(err => {
+    console.error('Database sync error:', err);
+  });
 
 module.exports = db;
