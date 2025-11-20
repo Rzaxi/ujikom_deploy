@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Sistem Manajemen Event Sekolah",
   "scripts": {
+    "start": "cd backend && npm start",
     "dev": "concurrently \"npm run backend\" \"npm run frontend\"",
     "backend": "cd backend && npm start",
     "frontend": "cd frontend && npm run dev",
