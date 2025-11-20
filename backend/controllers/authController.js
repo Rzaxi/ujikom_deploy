@@ -48,7 +48,7 @@ const register = async (req, res) => {
       verification_token,
       verification_expiry,
       is_verified: false,
-      role: 'peserta'
+      role: 'user'
     });
 
     // Send verification email
