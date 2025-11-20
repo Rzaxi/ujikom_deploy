@@ -75,7 +75,7 @@ const getEvents = async (req, res) => {
           flyer_url: eventData.flyer_url ? (
             eventData.flyer_url.startsWith('http')
               ? eventData.flyer_url
-              : `http://localhost:3000${eventData.flyer_url}`
+              : `${process.env.APP_URL || 'http://localhost:3000'}${eventData.flyer_url}`
           ) : null
         };
       })
@@ -143,7 +143,7 @@ const getEventById = async (req, res) => {
       flyer_url: eventData.flyer_url ? (
         eventData.flyer_url.startsWith('http')
           ? eventData.flyer_url
-          : `http://localhost:3000${eventData.flyer_url}`
+          : `${process.env.APP_URL}${eventData.flyer_url}`
       ) : null
     });
   } catch (error) {

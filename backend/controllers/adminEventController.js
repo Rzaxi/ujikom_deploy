@@ -58,7 +58,7 @@ const getAllEvents = async (req, res) => {
       flyer_url: event.flyer_url ? (
         event.flyer_url.startsWith('http')
           ? event.flyer_url
-          : `http://localhost:3000${event.flyer_url}`
+          : `${process.env.APP_URL || 'http://localhost:3000'}${event.flyer_url}`
       ) : null,
       kategori: event.kategori,
       createdAt: event.createdAt,
@@ -443,7 +443,7 @@ const getEventById = async (req, res) => {
       flyer_url: event.flyer_url ? (
         event.flyer_url.startsWith('http')
           ? event.flyer_url
-          : `http://localhost:3000${event.flyer_url}`
+          : `${process.env.APP_URL || 'http://localhost:3000'}${event.flyer_url}`
       ) : null,
       kategori: event.kategori,
       createdAt: event.createdAt,
