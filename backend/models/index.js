@@ -49,12 +49,20 @@ db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
 // Auto-sync database tables in production
-sequelize.sync({ force: false, alter: true })
+sequelize.query('SET FOREIGN_KEY_CHECKS = 0;')
+  .then(() => {
+    return sequelize.sync({ force: false, alter: true });
+  })
+  .then(() => {
+    return sequelize.query('SET FOREIGN_KEY_CHECKS = 1;');
+  })
   .then(() => {
     console.log('Database tables synced successfully!');
   })
   .catch(err => {
     console.error('Database sync error:', err);
+    // Re-enable foreign key checks even if sync fails
+    sequelize.query('SET FOREIGN_KEY_CHECKS = 1;');
   });
 
 module.exports = db;
