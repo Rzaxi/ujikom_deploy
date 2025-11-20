@@ -116,18 +116,8 @@ export const userAPI = {
     getProfile: () => api.get('/users/profile'),
     updateProfile: (userData) => api.put('/users/profile', userData),
     changePassword: (passwordData) => api.put('/users/change-password', passwordData),
-    getMyEvents: () => axios.get('http://localhost:3000/api/users/events', {
-        headers: {
-            'Authorization': `Bearer ${localStorage.getItem('token')}`,
-            'Content-Type': 'application/json'
-        }
-    }), // Fixed: add /api prefix
-    getMyCertificates: () => axios.get('http://localhost:3000/api/users/certificates', {
-        headers: {
-            'Authorization': `Bearer ${localStorage.getItem('token')}`,
-            'Content-Type': 'application/json'
-        }
-    }), // Fixed: add /api prefix
+    getMyEvents: () => api.get('/users/events'),
+    getMyCertificates: () => api.get('/users/certificates'),
 };
 
 // Events API (User/Public - hanya read dan register)
