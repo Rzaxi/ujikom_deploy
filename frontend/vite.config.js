@@ -57,5 +57,10 @@ export default defineConfig({
         changeOrigin: true,
       },
     }
+  },
+  preview: {
+    host: true,
+    port: 4173,
+    allowedHosts: ['frontend-production-733b.up.railway.app']
   }
 })
