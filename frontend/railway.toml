@@ -1,0 +1,11 @@
+[build]
+builder = "NIXPACKS"
+
+[deploy]
+startCommand = "npm run preview"
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 10
+
+[[deploy.environmentVariables]]
+name = "VITE_API_URL"
+value = "https://ujikomdeploy-production.up.railway.app/api"
