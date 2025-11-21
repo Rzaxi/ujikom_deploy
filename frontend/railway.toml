@@ -6,6 +6,10 @@ startCommand = "npm run preview"
 restartPolicyType = "ON_FAILURE"
 restartPolicyMaxRetries = 10
 
+# Environment variables for build time
+[build.env]
+VITE_API_URL = "https://ujikomdeploy-production.up.railway.app/api"
+
 [[deploy.environmentVariables]]
 name = "VITE_API_URL"
 value = "https://ujikomdeploy-production.up.railway.app/api"
